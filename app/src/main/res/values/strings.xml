@@ -1,9 +1,10 @@
 <resources>
-    <string name="app_name">DayFirst</string>
+    <string name="app_name">LogIn</string>
     <string name="hello">Hello World!</string>
     <string name="str_message">Welcome to lambton.</string>
     <string name="login">Welcome to LogIn page.</string>
     <string name="email">Enter Your Username.</string>
     <string name="password">password.</string>
     <string name="title_activity_second">SecondActivity</string>
+    <string name="textview">TextView</string>
 </resources>

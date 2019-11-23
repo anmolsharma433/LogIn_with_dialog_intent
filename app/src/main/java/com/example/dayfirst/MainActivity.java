@@ -34,10 +34,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (email.getText().toString().trim().length() != 0) {
 
-                    if (email.getText().toString().equals("Anmol") && password.getText().toString().equals("1234")) {
+                    if (email.getText().toString().equals("Anmol") && password.getText().toString().equals("sharma")) {
                         Toast.makeText(MainActivity.this, "You are loggedin.", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                        intent.putExtra("et",email.getText().toString());
+                        intent.putExtra("pd",password.getText().toString());
                         startActivity(intent);
+                        finish();
                     } else {
                         Toast.makeText(MainActivity.this, "Your email id or password is incorrect.", Toast.LENGTH_LONG).show();
                     }
