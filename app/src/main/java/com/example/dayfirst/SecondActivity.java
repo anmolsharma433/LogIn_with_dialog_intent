@@ -27,7 +27,7 @@ public class SecondActivity extends AppCompatActivity {
         btnUpcase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               String tup = st.toUpperCase()
+               String tup = st.toUpperCase();
                 output.setText(tup);
 
             }

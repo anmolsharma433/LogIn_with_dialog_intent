@@ -2,9 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/clLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FDD835"
+    android:background="@android:color/background_light"
     tools:context=".MainActivity">
 
     <ImageView
@@ -27,6 +28,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:textAlignment="center"
+        android:textColor="@android:color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtBanner"
@@ -42,6 +44,7 @@
         android:ems="10"
         android:inputType="textPassword"
         android:textAlignment="center"
+        android:textColor="@android:color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/etEmail"
@@ -49,10 +52,11 @@
 
     <Button
         android:id="@+id/btnLogin"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:backgroundTint="#F4511E"
+        android:backgroundTint="#5A91FE"
         android:text="LogIn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -65,9 +69,34 @@
         android:layout_marginTop="16dp"
         android:text="@string/login"
         android:textAlignment="center"
+        android:textColor="@android:color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <TextView
+        android:id="@+id/txtDarkmode"
+        android:layout_width="158dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginEnd="82dp"
+        android:text="@string/dm"
+        android:textColor="@color/design_default_color_primary"
+        android:textSize="18sp"
+        android:textStyle="normal"
+        app:layout_constraintBaseline_toBaselineOf="@+id/swdm"
+        app:layout_constraintEnd_toStartOf="@+id/swdm"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Switch
+        android:id="@+id/swdm"
+        android:layout_width="48dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="80dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

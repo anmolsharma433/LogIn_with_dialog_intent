@@ -1,16 +1,26 @@
 package com.example.dayfirst;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,14 +29,23 @@ public class MainActivity extends AppCompatActivity {
     EditText email;
     EditText password;
     Button login;
+    TextView dm;
+    Switch sw;
+    //Id for layout
+    ConstraintLayout cl;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
         banner = findViewById(R.id.txtBanner);
         email = findViewById(R.id.etEmail);
         password = findViewById(R.id.etPassword);
         login = findViewById(R.id.btnLogin);
+        dm = findViewById(R.id.txtDarkmode);
+        sw = findViewById(R.id.swdm);
+        cl = findViewById(R.id.clLayout);
         login.setOnClickListener(new View.OnClickListener()
         {
 
@@ -38,8 +57,7 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "You are loggedin.", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(MainActivity.this, SecondActivity.class);
                         intent.putExtra("et",email.getText().toString());
-                        intent.putExtra("pd",password.getText().toString());
-                        startActivity(intent);
+                        intent.putExtra("pd",password.getText().toString());startActivity(intent);
                         finish();
                     } else {
                         Toast.makeText(MainActivity.this, "Your email id or password is incorrect.", Toast.LENGTH_LONG).show();
@@ -52,7 +70,68 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Change Color Button
+        sw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (sw.isChecked()) {
+
+                        cl.setBackgroundColor(Color.BLACK);
+                        ColorStateList colorstatelist = ColorStateList.valueOf(Color.rgb(216,27,96));
+                        email.setBackgroundTintList(colorstatelist);
+                        email.setTextColor(Color.WHITE);
+                        password.setBackgroundTintList(colorstatelist);
+                        password.setTextColor(Color.WHITE);
+                        login.setBackgroundTintList(colorstatelist);
+
+                        //email.setBackgroundColor(Color.rgb(216,27,96));
+
+                } else {
+                    cl.setBackgroundColor(Color.WHITE);
+                    ColorStateList colorstatelist = ColorStateList.valueOf(Color.rgb(216,27,96));
+                    email.setBackgroundTintList(colorstatelist);
+                    email.setTextColor(Color.BLACK);
+                    password.setBackgroundTintList(colorstatelist);
+                    password.setTextColor(Color.BLACK);
+                    login.setBackgroundTintList(colorstatelist);
+                }
+            }
+
+        });
+
     }
+
+    //option menu
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater minflatter = getMenuInflater();
+        minflatter.inflate(R.menu.menu_main,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    //option menu item selcted
+
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId())
+        {
+            case R.id.btnAbout:
+                Toast.makeText(MainActivity.this,"About us not yet aVAILAIBLE.",Toast.LENGTH_SHORT).show();
+            case R.id.btnLogOut:
+                Toast.makeText(MainActivity.this,"Logout Feature not yet availaible.",Toast.LENGTH_SHORT).show();
+            case R.id.op1:
+                Toast.makeText(MainActivity.this,"Option 1 is not yet aVAILAIBLE.",Toast.LENGTH_SHORT).show();
+            case R.id.op2:
+                Toast.makeText(MainActivity.this,"Option 2 is not yet aVAILAIBLE.",Toast.LENGTH_SHORT).show();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    //Context menu
+    
+
     private void alertDialog()
     {
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
@@ -74,3 +153,4 @@ public class MainActivity extends AppCompatActivity {
         alertDialog.show();
     }
 }
+
